@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Restaurant Bookings</title>
+</head>
+<body>
+    <h2>Restaurant Bookings</h2>
+    <table border="1">
+        <tr>
+            <th>S.No</th>
+            <th>Order No</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Persons</th>
+            <th>Booking Date</th>
+            <th>Booking Time</th>
+            <th>Order</th>
+            <th>Timestamp</th>
+        </tr>
+        {% for order in orders %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ order.order_no }}</td>
+            <td>{{ order.name }}</td>
+            <td>{{ order.phone_number }}</td>
+            <td>{{ order.persons }}</td>
+            <td>{{ order.booking_date }}</td>
+            <td>{{ order.booking_time }}</td>
+            <td>{{ order.order }}</td>
+            <td>{{ order.timestamp }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="9">No bookings yet.</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

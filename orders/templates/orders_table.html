@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bike Orders</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 90%;
+            margin: 20px auto;
+        }
+        th, td {
+            border: 1px solid #aaa;
+            padding: 8px 12px;
+            text-align: center;
+        }
+        th {
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <h2 style="text-align: center;">Bike Order List</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>S.No</th>
+                <th>Order No</th>
+                <th>Model No</th>
+                <th>Bike Name</th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th>Ordered On</th> <!-- NEW -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr>
+                <td>{{ order.sno }}</td>
+                <td>{{ order.order_no }}</td>
+                <td>{{ order.model_no }}</td>
+                <td>{{ order.bike_name }}</td>
+                <td>{{ order.price }}</td>
+                <td>{{ order.qty }}</td>
+                <td>{{ order.timestamp|date:"Y-m-d H:i:s" }}</td> <!-- NEW -->
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="7">No orders yet.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
