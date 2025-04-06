@@ -2,6 +2,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
 from .models import BikeOrder
+import urllib.parse
 
 @csrf_exempt
 def clear_orders(request):
@@ -14,7 +15,7 @@ def clear_orders(request):
 def log_order(request):
     if request.method == 'GET':
         model_no = request.GET.get('model_no')
-        bike_name = request.GET.get('bike_name')
+        bike_name = urllib.parse.unquote(request.GET.get('bike_name'))
         price = request.GET.get('price')
         qty = request.GET.get('qty')
 
